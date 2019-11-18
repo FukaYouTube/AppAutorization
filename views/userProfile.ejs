@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="/public/css/userStyle.css">
+    <link rel="stylesheet" href="/public/css/loaderStyle.css">
+
+    <title><%= user.username %></title>
+</head>
+<body>
+
+    
+    <div class="pre-loader" id="pre-loader"></div>
+    
+
+    <div class="content-profile-user-info">
+        <div class="content-unup">
+            <img src="/public/img/user.png">
+            <h1><%= user.first_name %></h1>
+        </div>
+        <div class="user-information">
+            <ul>
+                <li>Друзей: <%= user.friends.length %></li>
+                <li>Подписчков: <%= user.subscrubers.length %></li>
+                <li>О себе: <%= user.about_us %></li>
+                <li>Тэги: <%= user.tags %></li>
+                <% if(u){ %>
+                    <li><a href="/exit">Выйти</a></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="/public/js/loader.js"></script>
+    <script src="/public/js/main.js"></script>
+</body>
+</html>

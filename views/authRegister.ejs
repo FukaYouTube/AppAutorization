@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="/public/css/authStyle.css">
+    <link rel="stylesheet" href="/public/css/loaderStyle.css">
+
+    <title>WebApp - Register</title>
+</head>
+<body>
+
+    
+    <div class="pre-loader" id="pre-loader"></div>
+    
+
+    <div class="content-auth-cb">
+        <div class="auth-cb-register" id="form-register">
+            <h1>Регистрация</h1>
+            <form action="/register" method="post">
+                <input type="text" name="username" placeholder="🤵🏼 Username" autocomplete="off" required>
+                <input type="text" name="first_name" placeholder="👱🏻‍♂️ First name" autocomplete="off" required>
+                <input type="email" name="email" placeholder="📧 Email" autocomplete="off" required>
+                <input type="password" name="password" placeholder="🔒 Password" required>
+                <input type="password" name="password" placeholder="🔒 Again to password" required>
+                <input type="submit" value="Зарегистрироваться">
+                <a href="/">Назад</a>
+            </form>
+        </div>
+    </div>
+    
+
+    <script src="/public/js/loader.js"></script>
+    <script src="/public/js/main.js"></script>
+</body>
+</html>
