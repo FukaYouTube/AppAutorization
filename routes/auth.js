@@ -13,14 +13,14 @@ router.post('/', ass, async (req, res) => {
     let user = await User.findOne({ username })
 
     if(!user){
-        res.sendStatus(400)
+        res.json(`Данный пользователь не найден 404`).send()
     }else{
         let compare = await bcrypt.compareSync(password, user.password)
         if(compare){
             req.session.userId = user._id
-            res.redirect(`/u/${username}`)
+            res.redirect(`/u/${user.username}`)
         }else{
-            res.sendStatus(400)
+            res.json(`Не верный пароль`).send()
         }
     }
 })
@@ -32,14 +32,14 @@ router.post('/register', ass, async (req, res) => {
     let user = await User.findOne({ username })
 
     if(user){
-        res.sendStatus(400)
+        res.json(`Данный юзер занят другим пользователям`).send()
     }else{
         let hash = await bcrypt.hash(password[0] || password[1], 14)
         user = new User({ username, first_name, email, password: hash })
         user.save()
 
         req.session.userId = user._id
-        res.redirect(`/u/${username}`)
+        res.redirect(`/u/${user.username}`)
     }
 })
 
@@ -53,13 +53,13 @@ router.get('/u/:username', async (req, res) => {
             res.render('userProfile', { user, u: false })
         }
     }else{
-        res.sendStatus(404)
+        res.json(`Данный пользователь не найден 404`).send()
     }
 })
 
 router.get('/exit', (req, res) => {
     req.session.destroy()
-    res.redirect('back')
+    res.redirect('/')
 })
 
 module.exports = router
